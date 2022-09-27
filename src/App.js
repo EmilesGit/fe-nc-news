@@ -11,25 +11,21 @@ function App() {
         <header className="App-header">
           <h1>NC News!</h1>
         </header>
+        <nav className="Nav">
+          <Link to="/">Home</Link>
+          <Link to="/api/articles">Articles</Link>
+          <Link to="/api/users">Users</Link>
+        </nav>
         <section className="RouteHolder">
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/api/articles" element={<AllArticles />} />
-            <Route path="api/articles" element={<AllUsers />} />
+            <Route path="api/users" element={<AllUsers />} />
           </Routes>
-          <p>END OF ROUTES SECTION</p>
         </section>
       </div>
     </BrowserRouter>
   );
-}
-
-{
-  /* <nav>
-  <Link to="/">Home</Link>
-  <Link to="/articles">Articles</Link>
-  <Link to="/users">Users</Link>
-</nav>; */
 }
 
 export default App;
