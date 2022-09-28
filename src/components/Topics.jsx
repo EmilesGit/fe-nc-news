@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getArticles } from "../api";
+import LoadingSpinner from "../loading";
 
 export const Topics = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,21 +29,22 @@ export const Topics = () => {
         <Link to="/articles/cooking">Cooking</Link>
         <Link to="/articles/football">Football</Link>
       </fieldset>
-      <Routes>
-        <Route path="/articles/topics" element={<Topics />}></Route>
-      </Routes>
-      <ul>
-        {articles.map((article) => {
-          return (
-            <li>
-              <h3>Title - {article.title}</h3>
-              <h4>Author - {article.author}</h4>
-              <p>Topic - {article.topic}</p>
-              <hr></hr>
-            </li>
-          );
-        })}
-      </ul>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <ul>
+          {articles.map((article) => {
+            return (
+              <li>
+                <h3>Title - {article.title}</h3>
+                <h4>Author - {article.author}</h4>
+                <p>Topic - {article.topic}</p>
+                <hr></hr>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

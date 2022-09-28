@@ -10,7 +10,6 @@ export const SingleTopic = () => {
   useEffect(() => {
     setIsLoading(true);
     getArticlesByTopic(topic_slug).then((topicData) => {
-      console.log(topicData);
       setIsLoading(false);
       setTopic(topicData);
     });
