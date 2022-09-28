@@ -26,9 +26,9 @@ export const AllArticles = () => {
       <fieldset>
         <legend>Topics</legend>
         <Link to="/articles">All</Link>
-        <Link to="/topics/coding">Coding</Link>
-        <Link to="/topics/cooking">Cooking</Link>
-        <Link to="/topics/football">Football</Link>
+        <Link to="/articles/coding">Coding</Link>
+        <Link to="/articles/cooking">Cooking</Link>
+        <Link to="/articles/football">Football</Link>
       </fieldset>
 
       {isLoading ? (

@@ -35,7 +35,7 @@ export const Topics = () => {
         <ul>
           {articles.map((article) => {
             return (
-              <li>
+              <li key={article.article_id}>
                 <h3>Title - {article.title}</h3>
                 <h4>Author - {article.author}</h4>
                 <p>Topic - {article.topic}</p>
