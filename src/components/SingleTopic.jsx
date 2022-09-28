@@ -1,24 +1,20 @@
-import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { getArticles } from "../api";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { getArticlesByTopic } from "../api";
 import LoadingSpinner from "../loading";
 
-export const AllArticles = () => {
+export const SingleTopic = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [articles, setArticles] = useState([]);
-
+  const [topic, setTopic] = useState([]);
+  const { topic_slug } = useParams();
   useEffect(() => {
     setIsLoading(true);
-    getArticles()
-      .then((articles) => {
-        setIsLoading(false);
-        setArticles(articles);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        console.log(err);
-      });
-  }, []);
+    getArticlesByTopic(topic_slug).then((topicData) => {
+      console.log(topicData);
+      setIsLoading(false);
+      setTopic(topicData);
+    });
+  }, [topic_slug]);
 
   return (
     <div>
@@ -30,23 +26,22 @@ export const AllArticles = () => {
         <Link to="/topics/cooking">Cooking</Link>
         <Link to="/topics/football">Football</Link>
       </fieldset>
-
       {isLoading ? (
         <LoadingSpinner />
       ) : (
         <ul>
-          {articles.map((article) => {
+          {topic.map((article) => {
             return (
-              <section>
+              <div>
                 <li key={article.article_id}>
                   <h3>Title - {article.title}</h3>
                   <h4>Author - {article.author}</h4>
                   <p>Topic - {article.topic}</p>
                   <hr></hr>
                 </li>
-              </section>
+              </div>
             );
-          })}{" "}
+          })}
         </ul>
       )}
     </div>

@@ -15,3 +15,14 @@ export const getArticles = () => {
       console.log(err);
     });
 };
+
+export const getArticlesByTopic = (topic_slug) => {
+  return newsApi
+    .get(`/articles?topic=${topic_slug}`)
+    .then(({ data }) => {
+      return data.articles;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
