@@ -5,6 +5,7 @@ import { Home } from "./components/Home";
 import { AllUsers } from "./components/AllUsers";
 import { Topics } from "./components/Topics";
 import { PageNotFound } from "./components/PageNotFound";
+import { ViewArticle } from "./components/ViewArticle";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/users" element={<AllUsers />} />
             <Route path="/topics" element={<Topics />}></Route>
             <Route path="/articles/:topic_slug" element={<AllArticles />} />
+            <Route path="/articles/:topic_slug/:id" element={<ViewArticle />} />
             <Route path="*" element={PageNotFound} />
           </Routes>
         </section>

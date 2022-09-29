@@ -5,12 +5,18 @@ const newsApi = axios.create({
   baseURL: "https://emiles-nc-news.herokuapp.com/api",
 });
 
-export const getArticles = (input) => {
+export const getArticlesByTopic = (input) => {
   return newsApi
     .get("/articles", { params: { topic: input } })
     .then(({ data }) => {
       return data.articles;
     });
+};
+
+export const getArticlesById = (id) => {
+  return newsApi.get(`/articles/${id}`).then(({ data }) => {
+    return data.result;
+  });
 };
 
 export const getTopics = () => {
