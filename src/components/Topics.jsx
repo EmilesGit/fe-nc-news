@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getArticles } from "../api";
+import { getArticlesByTopic } from "../api";
 import LoadingSpinner from "../loading";
 
 export const Topics = () => {
@@ -9,7 +9,7 @@ export const Topics = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles()
+    getArticlesByTopic()
       .then((articles) => {
         setIsLoading(false);
         setArticles(articles);

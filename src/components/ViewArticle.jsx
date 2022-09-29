@@ -1,29 +1,29 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { getArticlesByTopic, getTopics } from "../api";
+import { getArticlesById, getTopics } from "../api";
 import LoadingSpinner from "../loading";
 import { PageNotFound } from "./PageNotFound";
 
-export const AllArticles = () => {
+export const ViewArticle = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const { topic_slug } = useParams();
+  const [article, setArticle] = useState([]);
+  const { id } = useParams();
   const [topicLink, setTopicLink] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
-    getArticlesByTopic(topic_slug)
-      .then((articles) => {
+    getArticlesById(id)
+      .then((data) => {
         setIsLoading(false);
-        setArticles(articles);
+        setArticle(data);
       })
       .catch((err) => {
         setIsLoading(false);
         setError(err);
         console.log(err);
       });
-  }, [topic_slug]);
+  }, [id]);
 
   useEffect(() => {
     getTopics().then((data) => {
@@ -54,21 +54,15 @@ export const AllArticles = () => {
         <LoadingSpinner />
       ) : (
         <ul>
-          {articles.map((article) => {
-            return (
-              <section>
-                <li key={article.article_id}>
-                  <h3>Title - {article.title}</h3>
-                  <h4>Author - {article.author}</h4>
-                  <p>Topic - {article.topic}</p>
-                  <Link to={`/articles/${article.topic}/${article.article_id}`}>
-                    View Article
-                  </Link>
-                  <hr></hr>
-                </li>
-              </section>
-            );
-          })}{" "}
+          <section>
+            <li key={article.article_id}>
+              <h3>Title - {article.title}</h3>
+              <h4>Author - {article.author}</h4>
+              <p>Topic - {article.topic}</p>
+              <p>{article.body}</p>
+              <hr></hr>
+            </li>
+          </section>{" "}
         </ul>
       )}
     </div>
