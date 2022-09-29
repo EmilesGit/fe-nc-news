@@ -1,10 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { AllArticles } from "./components/AllArticles";
+import { AllArticles } from "./components/Articles";
 import { Home } from "./components/Home";
 import { AllUsers } from "./components/AllUsers";
 import { Topics } from "./components/Topics";
-import { SingleTopic } from "./components/SingleTopic";
 import { PageNotFound } from "./components/PageNotFound";
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
             <Route path="/articles" element={<AllArticles />} />
             <Route path="/users" element={<AllUsers />} />
             <Route path="/topics" element={<Topics />}></Route>
-            <Route path="/articles/:topic_slug" element={<SingleTopic />} />
+            <Route path="/articles/:topic_slug" element={<AllArticles />} />
             <Route path="*" element={PageNotFound} />
           </Routes>
         </section>
