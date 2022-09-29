@@ -60,9 +60,6 @@ export const ViewArticle = () => {
               <h4>Author - {article.author}</h4>
               <p>Topic - {article.topic}</p>
               <p>{article.body}</p>
-              <Link to={`/articles/${article.topic}/${article.article_id}`}>
-                View Article
-              </Link>
               <hr></hr>
             </li>
           </section>{" "}
