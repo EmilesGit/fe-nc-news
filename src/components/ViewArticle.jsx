@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getArticlesById, getTopics } from "../api";
+import { addVotes, getArticlesById, getTopics } from "../api";
 import LoadingSpinner from "../loading";
 import { PageNotFound } from "./PageNotFound";
 
@@ -10,6 +10,7 @@ export const ViewArticle = () => {
   const { id } = useParams();
   const [topicLink, setTopicLink] = useState([]);
   const [error, setError] = useState(null);
+  const [likes, setLikes] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,6 +18,7 @@ export const ViewArticle = () => {
       .then((data) => {
         setIsLoading(false);
         setArticle(data);
+        setLikes(data.votes);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -61,6 +63,17 @@ export const ViewArticle = () => {
               <p>Topic - {article.topic}</p>
               <p>{article.body}</p>
               <hr></hr>
+              <p> Likes - {likes}</p>
+              <button
+                onClick={() => {
+                  addVotes(article.article_id);
+                  setLikes((previousLikes) => {
+                    return previousLikes + 1;
+                  });
+                }}
+              >
+                Like
+              </button>
             </li>
           </section>{" "}
         </ul>

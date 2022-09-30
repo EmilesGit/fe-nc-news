@@ -24,3 +24,9 @@ export const getTopics = () => {
     return res.data;
   });
 };
+
+export const addVotes = (id) => {
+  return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {
+    console.log(res);
+  });
+};
