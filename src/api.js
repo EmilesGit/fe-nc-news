@@ -26,7 +26,5 @@ export const getTopics = () => {
 };
 
 export const addVotes = (id) => {
-  return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {
-    console.log(res);
-  });
+  return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {});
 };
