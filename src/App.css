@@ -1,10 +1,11 @@
 .App {
   text-align: center;
+  
 }
 
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3e4147;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -16,4 +17,35 @@
 
 .App-link {
   color: #ee3211;
+
+}
+
+
+body {
+      background-image: url(https://cdn.pixabay.com/photo/2021/07/14/13/44/newspaper-6466115_1280.jpg);
+}
+
+section {
+
+    width: 80%;
+    background-color: #3e4147;
+    margin-left: auto;
+    margin-right: auto;
+    color: antiquewhite;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+}
+
+nav a {
+  padding : 10px;
+  color: rgb(27, 238, 97)
+}
+
+section a {
+  padding: 10px;
+  color: rgb(27, 238, 97)
 }
