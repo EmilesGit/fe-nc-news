@@ -46,6 +46,12 @@ export const ViewArticle = () => {
     });
   }, [id]);
 
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = (event) => {
+    setIsShown((current) => !current);
+  };
+
   if (error) {
     return <PageNotFound message={error} />;
   }
@@ -54,7 +60,7 @@ export const ViewArticle = () => {
       <h2>Articles</h2>
       <fieldset>
         <legend>Topics</legend>
-        <Link to="/articles">All</Link>
+        <Link to='/articles'>All</Link>
         {topicLink.map((topic) => {
           return (
             <Link
@@ -76,26 +82,6 @@ export const ViewArticle = () => {
               <p>Topic - {article.topic}</p>
               <p>{article.body}</p>
               <hr></hr>
-              <fieldset>
-                <button
-                  onClick={() => {
-                    comments.map((comment) => {
-                      return (
-                        <section>
-                          <li key={comment.comment_id}>
-                            <h4>Author - {comment.author}</h4>
-                            <p>{comment.body}</p>
-                            <p>Likes - {comment.votes}</p>
-                            <hr></hr>
-                          </li>
-                        </section>
-                      );
-                    });
-                  }}
-                >
-                  View Comments
-                </button>
-              </fieldset>
               <p> Likes - {likes}</p>
               <button
                 onClick={() => {
@@ -107,6 +93,22 @@ export const ViewArticle = () => {
               >
                 Like
               </button>
+              <fieldset>
+                <button onClick={handleClick}>View Comments</button>
+                {isShown &&
+                  comments.map((comment) => {
+                    return (
+                      <section>
+                        <li key={comment.comment_id}>
+                          <h4>Author - {comment.author}</h4>
+                          <p>{comment.body}</p>
+                          <p>Likes - {comment.votes}</p>
+                          <hr></hr>
+                        </li>
+                      </section>
+                    );
+                  })}
+              </fieldset>
             </li>
           </section>{" "}
         </ul>
