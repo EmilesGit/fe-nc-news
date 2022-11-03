@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <header className='App-header'>
-          <h1>NC News!</h1>
+          <h1>NC News</h1>
           <nav className='nav'>
             <Link to='/'>Home</Link>
             <Link to='/articles'>Articles</Link>

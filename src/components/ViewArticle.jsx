@@ -42,7 +42,6 @@ export const ViewArticle = () => {
   useEffect(() => {
     getArticleComments(id).then((data) => {
       setComments(data.comments);
-      console.log(comments);
     });
   }, [id]);
 
@@ -95,6 +94,7 @@ export const ViewArticle = () => {
               </button>
               <fieldset>
                 <button onClick={handleClick}>View Comments</button>
+                <button>Add comment</button>
                 {isShown &&
                   comments.map((comment) => {
                     return (

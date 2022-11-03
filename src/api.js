@@ -34,3 +34,16 @@ export const getTopics = () => {
 export const addVotes = (id) => {
   return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {});
 };
+
+export const getUsers = () => {
+  return newsApi.get("/users").then((res) => {
+    console.log(res.data);
+    return res.data;
+  });
+};
+
+export const addArticleComments = (id, newComment) => {
+  return newsApi
+    .patch(`/articles/${id}/comments`, { newComment })
+    .then((res) => {});
+};

@@ -49,3 +49,9 @@ section a {
   padding: 10px;
   color: rgb(27, 238, 97)
 }
+
+img {
+  width: 50%;
+  height: 60%;
+  object-fit: cover;
+}
